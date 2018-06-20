@@ -53,6 +53,7 @@ def lightPixel(image):
 def darkPixel(image):
     meanValue = np.mean(image)
     image[image>=meanValue] = 255
+    
     return image
 
 def largeArea(image):
