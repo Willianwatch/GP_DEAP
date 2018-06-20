@@ -59,8 +59,8 @@ def darkPixel(image):
 def largeArea(image):
     output = np.copy(image)
     bwImage = np.ones(image.shape, dtype=np.uint8)
-    rowEqual = np.uint8(cv2.absdiff(image[1:, :], image[:-1, :]) == 0）* 255
-    colEqual = np.uint8(cv2.absdiff(image[:, 1:]), image[:,:-1]) == 0) * 255
+    rowEqual = np.uint8(cv2.absdiff(image[1:, :], image[:-1, :]) == 0)* 255
+    colEqual = np.uint8(cv2.absdiff(image[:, 1:], image[:,:-1]) == 0) * 255
     bwImage[1:, :] = cv2.add(rowEqual, bwImage[1:, :])
     bwImage[:-1, :] = cv2.add(rowEqual, bwImage[:-1, :])
     bwImage[:, 1:] = cv2.add(colEqual, bwImage[:, 1:])
@@ -73,12 +73,12 @@ def largeArea(image):
             for row, col in region.coords:
                 output[row, col] = 255
     return output
-        
+       
 def smallArea(image):
     output = np.copy(image)
     bwImage = np.ones(image.shape, dtype=np.uint8)
-    rowEqual = np.uint8(cv2.absdiff(image[1:, :], image[:-1, :]) == 0）* 255
-    colEqual = np.uint8(cv2.absdiff(image[:, 1:]), image[:,:-1]) == 0) * 255
+    rowEqual = np.uint8(cv2.absdiff(image[1:, :], image[:-1, :]) == 0)* 255
+    colEqual = np.uint8(cv2.absdiff(image[:, 1:], image[:, :-1]) == 0) * 255
     bwImage[1:, :] = cv2.add(rowEqual, bwImage[1:, :])
     bwImage[:-1, :] = cv2.add(rowEqual, bwImage[:-1, :])
     bwImage[:, 1:] = cv2.add(colEqual, bwImage[:, 1:])
